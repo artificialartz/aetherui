@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --glass-border: rgba(255, 255, 255, 0.125);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-shadow: rgba(0, 0, 0, 0.1);
+  }
+
+  body {
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Glassmorphism base styles with hardware acceleration */
+  .glass {
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .glass-card {
+    @apply glass rounded-2xl shadow-lg;
+    box-shadow:
+      0 8px 32px 0 rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-button {
+    @apply glass rounded-xl px-6 py-3 font-medium transition-all duration-300;
+    @apply hover:bg-white/10 hover:shadow-xl hover:scale-105;
+    @apply active:scale-95;
+  }
+
+  .glass-input {
+    @apply glass rounded-xl px-4 py-3 outline-none transition-all duration-300;
+    @apply focus:ring-2 focus:ring-white/20 focus:bg-white/10;
+  }
+
+  /* Mesh gradient animations */
+  .mesh-gradient {
+    background-size: 400% 400%;
+    animation: mesh-gradient 15s ease infinite;
+  }
+
+  /* Hardware acceleration for animations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
