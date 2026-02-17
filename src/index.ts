@@ -5,6 +5,8 @@ export { GlassButton } from './components/GlassButton';
 export { GlassInput } from './components/GlassInput';
 export { MeshGradient } from './components/MeshGradient';
 export { MeshGradientCard } from './components/MeshGradientCard';
+export { CommandPalette } from './components/CommandPalette';
+export { AdaptiveLayout, useBreakpoint, useResponsiveValue } from './components/AdaptiveLayout';
 
 // Types
 export type {
@@ -14,6 +16,15 @@ export type {
   MeshGradientConfig,
   CSSProperties,
 } from './types';
+
+export type { Command, CommandGroup, CommandPaletteProps } from './components/CommandPalette';
+export type {
+  AdaptiveLayoutProps,
+  ResponsiveValue,
+  Breakpoint,
+  ColumnSpan,
+  GridAlignment,
+} from './components/AdaptiveLayout';
 
 // Utils
 export {
