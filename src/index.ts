@@ -56,5 +56,21 @@ export {
   useHardwareAcceleration,
 } from './hooks/useBackdropFilter';
 
+export {
+  useHover,
+  useFocus,
+  usePress,
+  useSpringTransition,
+  useIntersectionObserver,
+  useReducedMotion,
+  useClickOutside,
+  useEscapeKey,
+  useKeyboardNavigation,
+  useClipboard,
+  useDebounce,
+  useThrottle,
+  useMediaQuery,
+} from './hooks/useInteractions';
+
 // Styles
 import './style.css';

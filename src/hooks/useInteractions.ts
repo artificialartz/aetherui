@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback, useRef, type RefObject } from 'react';
-import { motion, useAnimation, useMotionValue, useTransform, type AnimationControls } from 'framer-motion';
+import { useAnimation, useMotionValue, useTransform } from 'framer-motion';
 
 /**
  * Hook for managing hover states with smooth transitions
  */
-export function useHover<T extends HTMLElement = HTMLDivElement>(
+export function useHover(
   options: {
     onHoverStart?: () => void;
     onHoverEnd?: () => void;
@@ -59,7 +59,7 @@ export function useFocus<T extends HTMLElement = HTMLElement>() {
   const [isFocusVisible, setIsFocusVisible] = useState(false);
   const hasFocusedByMouse = useRef(false);
 
-  const handleFocus = useCallback((e: React.FocusEvent<T>) => {
+  const handleFocus = useCallback((_e: React.FocusEvent<T>) => {
     setIsFocused(true);
     // Only show focus ring if not triggered by mouse
     if (!hasFocusedByMouse.current) {
@@ -162,10 +162,10 @@ export function useSpringTransition(
     mass?: number;
   } = {}
 ) {
-  const { stiffness = 300, damping = 30, mass = 1 } = options;
+  const { stiffness: _stiffness = 300, damping: _damping = 30, mass: _mass = 1 } = options;
 
   const motionValue = useMotionValue(value);
-  const spring = useTransform(motionValue, (latest) => latest);
+  const spring = useTransform(motionValue, (_latest) => value);
 
   useEffect(() => {
     motionValue.set(value);
